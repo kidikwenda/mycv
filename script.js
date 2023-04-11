@@ -1,4 +1,6 @@
-const lang = 'pt';
+const lang = getLang() || 'pt';
+const newLine = $create('span');
+newLine.classList.add('new-line')
 console.log('bleed')
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -13,9 +15,33 @@ var titles = {
     formacoes: {
         pt: 'Formação Académica',
         en: 'Academic Formation',
-    }
+    },
+    info_adicionais: {
+        pt: 'Informações Adicionais',
+        en: 'Additional Information',
+    },
+    email: 'E-mail',
+    telefone: {
+        pt: 'Telefone(s)',
+        en: 'Telephone(s)',
+    },
+    idiomas: {
+        pt: 'Idiomas',
+        en: 'Languages',
+    },
+    tec_competencias: {
+        pt: 'Competências Técnicas',
+        en: 'Technical skills',
+    },
+    certifications: {
+        pt: 'Formações/Certificações',
+        en: 'Training/Certifications',
+    },
+    pers_competencias: {
+        pt: 'Competências Pessoais',
+        en: 'Personal skills',
+    },
 }
-
 
 var perfil = {
     title: {
@@ -76,7 +102,6 @@ var experiencias = [
     }
 ]
 
-
 var formacoes = [
     {
         role: {
@@ -95,13 +120,139 @@ var formacoes = [
     }
 ]
 
+var info_adicionais = [
+    {
+        pt: 'Co-criador de software de Gestão (Quianni) certificado pela AGT.',
+        en: 'Co-creator of Management software (Quianni) certified by General Tax Administration of Angola.'
+    },
+    {
+        pt: 'Desenvolveu projectos PWA, Push Notifications e Meta-programação.',
+        en: 'Developed PWA, Push Notifications and Meta-programming projects.'
+    },
+    {
+        pt: 'Desenvolveu projectos para órgãos do governo.',
+        en: 'Developed projects for government agencies.'
+    },
+    {
+        pt: 'Participação no Workshop da Google em Angola.',
+        en: 'Participation in the Google Workshop in Angola.'
+    },
+    {
+        pt: 'Carta de Condução Ligeiro Profissional.',
+        en: 'Light Professional Driving License.'
+    }
+]
+
+var idiomas = [
+    {
+        nome: {
+            pt: 'Português',
+            en: 'Portuguese'
+        },
+        level: 5
+    },
+    {
+        nome: {
+            pt: 'Inglês',
+            en: 'English'
+        },
+        level: 4
+    },
+    {
+        nome: {
+            pt: 'Kimbundu',
+            en: 'Kimbundu'
+        },
+        level: 3
+    }
+]
+
+var techs = [
+    {
+        title2: {
+            pt: 'Linguagens de Programação:',
+            en: 'Programming languages:'
+        },
+        techs: 'JavaScript, PHP, JAVA, HTML5, CSS, C#, C e Python'
+    },
+    {
+        title2: {
+            pt: 'Frameworks/Tecnologias:',
+            en: 'Frameworks/Technologies:'
+        },
+        techs: 'Node Js , Laravel, Cakephp, ReactJs, React Native, Xamarin, Ionic, Angular, Electron, Adonis, Django.'
+    },
+    {
+        title2: {
+            pt: 'Sistemas Operativos:',
+            en: 'Operating Systems:'
+        },
+        techs: 'Linux, Windows, MAC, Android e iOS'
+    }
+]
+
+var certifications = [
+    {
+        pt: 'Gestão Ágil de Projectos (Tistech).',
+        en: 'Agile Project Management (Tistech).'
+    },
+    {
+        pt: 'Formação de Formadores (INEFOP).',
+        en: 'Training of Trainers (INEFOP).'
+    },
+    {
+        pt: 'Gestão e Concepção da Formação (INEFOP).',
+        en: 'Training Management and Design (INEFOP).'
+    }
+]
+
+var pers_competencias = [
+    {
+        pt: 'Espírito de equipa e liderança.',
+        en: 'Team spirit and leadership.'
+    },
+    {
+        pt: 'Excelente capacidade de comunicação.',
+        en: 'Excellent communication skills.'
+    },
+    {
+        pt: 'Capacidade para ambientes multiculturais.',
+        en: 'Capacity for multicultural environments.'
+    },
+    {
+        pt: 'Capacidade de trabalho sob pressão.',
+        en: 'Ability to work under pressure.'
+    },
+    {
+        pt: 'Sentido de organização.',
+        en: 'Sense of organization.'
+    },
+    {
+        pt: 'Capacidade de liderança.',
+        en: 'Leadership ability.'
+    }
+]
+
 function init() {
     let left = $one('#left');
     left.innerHTML = ''
 
+    console.log(getLang())
+
     handle_profile(left);
     handle_experiences(left);
     handle_formacoes(left);
+    handle_info_adicionais(left);
+
+    let right = $one('#right');
+    right.innerHTML = ''
+
+    handle_email(right);
+    handle_telefones(right);
+    handle_idiomas(right);
+    handle_tec_competencias(right);
+    handle_certifications(right);
+    handle_personal_competencias(right);
 }
 
 function handle_profile(container) {
@@ -130,6 +281,7 @@ function handle_experiences(container) {
 
         let row = $create('span');
         row.classList.add('row');
+        row.classList.add('row-2');
 
         let title_1 = $create('span');
         title_1.classList.add('title-1');
@@ -150,10 +302,10 @@ function handle_experiences(container) {
         bold.classList.add('bold');
         bold.innerHTML = expe.desc[lang];
 
+        paragraph_2.appendChild(title_1);
+        paragraph_2.appendChild(title_2);
         paragraph_2.appendChild(bold);
-
-        row.appendChild(title_1);
-        row.appendChild(title_2);
+        
         row.appendChild(paragraph_1);
         row.appendChild(paragraph_2);
 
@@ -172,6 +324,7 @@ function handle_formacoes(container) {
 
         let row = $create('span');
         row.classList.add('row');
+        row.classList.add('row-2');
 
         let title_1 = $create('span');
         title_1.classList.add('title-1');
@@ -192,13 +345,170 @@ function handle_formacoes(container) {
         bold.classList.add('bold');
         bold.innerHTML = expe.desc[lang];
 
+        paragraph_2.appendChild(title_1);
+        paragraph_2.appendChild(title_2);
         paragraph_2.appendChild(bold);
 
-        row.appendChild(title_1);
-        row.appendChild(title_2);
         row.appendChild(paragraph_1);
         row.appendChild(paragraph_2);
 
+        container.appendChild(row);
+    }
+}
+
+function handle_info_adicionais(container) {
+    let title = $create('span');
+    title.classList.add('row');
+    title.classList.add('title');
+    title.innerHTML = titles.info_adicionais[lang];
+
+    container.appendChild(title);
+    for (const expe of info_adicionais) {
+
+        let row = $create('span');
+        row.classList.add('row');
+
+        let paragraph = $create('span');
+        paragraph.classList.add('paragraph');
+        paragraph.classList.add('item-list');
+        paragraph.innerHTML = expe[lang];
+
+        row.appendChild(paragraph);
+        container.appendChild(row);
+    }
+}
+
+function handle_email(container) {
+    let title = $create('span');
+    title.classList.add('row');
+    title.classList.add('title');
+    title.innerHTML = titles.email;
+
+    container.appendChild(title);
+
+    let row = $create('span');
+    row.classList.add('row');
+
+    let paragraph = $create('span');
+    paragraph.classList.add('paragraph');
+    paragraph.classList.add('item-list');
+    paragraph.innerHTML = 'quirinda@hotmail.com';
+
+    row.appendChild(paragraph);
+    container.appendChild(row);
+
+}
+
+function handle_telefones(container) {
+    let title = $create('span');
+    title.classList.add('row');
+    title.classList.add('title');
+    title.innerHTML = titles.telefone[lang];
+
+    container.appendChild(title);
+
+    let row = $create('span');
+    row.classList.add('row');
+
+    let paragraph = $create('span');
+    paragraph.classList.add('paragraph');
+    paragraph.classList.add('item-list');
+    paragraph.innerHTML = '+244 925 260 869';
+
+    row.appendChild(paragraph);
+    container.appendChild(row);
+}
+
+function handle_idiomas(container) {
+    let title = $create('span');
+    title.classList.add('row');
+    title.classList.add('title');
+    title.innerHTML = titles.idiomas[lang];
+
+    container.appendChild(title);
+
+    for (const expe of idiomas) {
+
+        let row = $create('span');
+        row.classList.add('row');
+
+        let paragraph = $create('span');
+        paragraph.classList.add('paragraph');
+        paragraph.classList.add('item-list');
+        paragraph.innerHTML = expe.nome[lang];
+
+        row.appendChild(paragraph);
+        container.appendChild(row);
+    }
+}
+
+function handle_tec_competencias(container) {
+    let title = $create('span');
+    title.classList.add('row');
+    title.classList.add('title');
+    title.innerHTML = titles.tec_competencias[lang];
+
+    container.appendChild(title);
+
+    for (const expe of techs) {
+
+        let row = $create('span');
+        row.classList.add('row');
+
+        let title2 = $create('span');
+        title2.classList.add('title-3');
+        title2.innerHTML = expe.title2[lang];
+
+        let paragraph = $create('span');
+        paragraph.classList.add('item-list');
+        paragraph.innerHTML = expe.techs;
+
+        row.appendChild(title2);
+        row.appendChild(paragraph);
+        container.appendChild(row);
+    }
+}
+
+function handle_certifications(container) {
+    let title = $create('span');
+    title.classList.add('row');
+    title.classList.add('title');
+    title.innerHTML = titles.certifications[lang];
+
+    container.appendChild(title);
+
+    for (const expe of certifications) {
+
+        let row = $create('span');
+        row.classList.add('row');
+
+        let paragraph = $create('span');
+        paragraph.classList.add('item-list');
+        paragraph.innerHTML = expe[lang];
+
+        row.appendChild(paragraph);
+        container.appendChild(row);
+    }
+}
+
+function handle_personal_competencias(container) {
+    let title = $create('span');
+    title.classList.add('row');
+    title.classList.add('title');
+    title.innerHTML = titles.pers_competencias[lang];
+
+    container.appendChild(title);
+
+    for (const expe of pers_competencias) {
+
+        let row = $create('span');
+        row.classList.add('row');
+
+        let paragraph = $create('span');
+        paragraph.classList.add('item-list');
+        paragraph.innerHTML = expe[lang];
+
+        row.appendChild(paragraph);
         container.appendChild(row);
     }
 }
@@ -213,4 +523,8 @@ function $all(sentence) {
 
 function $create(element) {
     return document.createElement(element);
+}
+
+function getLang() {
+    return document.location.href.split('lang')[1].substring(1);
 }
