@@ -1,7 +1,6 @@
 const lang = getLang() || 'pt';
 const newLine = $create('span');
 newLine.classList.add('new-line')
-console.log('bleed')
 
 document.addEventListener('DOMContentLoaded', function () {
     init()
@@ -237,7 +236,7 @@ function init() {
     let left = $one('#left');
     left.innerHTML = ''
 
-    console.log(getLang())
+    console.log(lang)
 
     handle_profile(left);
     handle_experiences(left);
@@ -526,5 +525,5 @@ function $create(element) {
 }
 
 function getLang() {
-    return document.location.href.split('lang')[1].substring(1);
+    return document.location.pathname?.substring(1);
 }

@@ -48,11 +48,13 @@
 }
 
 #left {
+    min-height: 100vh;
     padding: 5;
     width: 63%;
 }
 
 #right {
+    min-height: 100vh;
     padding: 10;
     width: 33%;
     background-color: #d2d7d8;
@@ -80,7 +82,7 @@
 }
 
 .item-list::before {
-    content: "* ";
+    content: "";
 }
 
 .paragraph-1 {

@@ -1,0 +1,29 @@
+{
+  "name": "mycv",
+  "version": "1.0.0",
+  "description": "meu cv codificado",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --watch index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kidikwenda/mycv.git"
+  },
+  "keywords": [
+    "mycv",
+    "quifucussa",
+    "adilson"
+  ],
+  "author": "Adilson Quifucussa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kidikwenda/mycv/issues"
+  },
+  "homepage": "https://github.com/kidikwenda/mycv#readme",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  }
+}
