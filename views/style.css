@@ -50,13 +50,13 @@
 #left {
     min-height: 100vh;
     padding: 5;
-    width: 63%;
+    width: 62%;
 }
 
 #right {
     min-height: 100vh;
     padding: 10;
-    width: 33%;
+    width: 32%;
     background-color: #d2d7d8;
 }
 

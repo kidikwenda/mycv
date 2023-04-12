@@ -244,14 +244,16 @@ function init() {
     handle_info_adicionais(left);
 
     let right = $one('#right');
-    right.innerHTML = ''
+    // right.innerHTML = ''
 
-    handle_email(right);
-    handle_telefones(right);
-    handle_idiomas(right);
-    handle_tec_competencias(right);
-    handle_certifications(right);
-    handle_personal_competencias(right);
+    // handle_email(right);
+    // handle_telefones(right);
+    let idiomas = $one('#idiomas', { container: right});
+    console.log('idiomas', idiomas);
+    idiomas.innerHTML = handle_idiomas(right);
+    // handle_tec_competencias(right);
+    // handle_certifications(right);
+    // handle_personal_competencias(right);
 }
 
 function handle_profile(container) {
@@ -419,26 +421,34 @@ function handle_telefones(container) {
 }
 
 function handle_idiomas(container) {
-    let title = $create('span');
-    title.classList.add('row');
-    title.classList.add('title');
-    title.innerHTML = titles.idiomas[lang];
+    return;
+    let html = `<span class='row title'>${titles.idiomas[lang]}</span>`
 
-    container.appendChild(title);
+    // let title = $create('span');
+    // title.classList.add('row');
+    // title.classList.add('title');
+    // title.innerHTML = titles.idiomas[lang];
+
+    // container.appendChild(title);
 
     for (const expe of idiomas) {
 
-        let row = $create('span');
-        row.classList.add('row');
+        html += `<span class='row'>`
+        // let row = $create('span');
+        // row.classList.add('row');
 
-        let paragraph = $create('span');
-        paragraph.classList.add('paragraph');
-        paragraph.classList.add('item-list');
-        paragraph.innerHTML = expe.nome[lang];
+        html += `<span class='paragraph item-list'>${expe.nome[lang]}</span>`
+        // let paragraph = $create('span');
+        // paragraph.classList.add('paragraph');
+        // paragraph.classList.add('item-list');
+        // paragraph.innerHTML = expe.nome[lang];
 
-        row.appendChild(paragraph);
-        container.appendChild(row);
+        // row.appendChild(paragraph);
+        html += `</span>`
+        // container.appendChild(row);
     }
+
+    return html;
 }
 
 function handle_tec_competencias(container) {
@@ -512,8 +522,9 @@ function handle_personal_competencias(container) {
     }
 }
 
-function $one(sentence) {
-    return document.querySelector(sentence);
+function $one(sentence, params = {}) {
+    let { container = document } = params;
+    return container.querySelector(sentence);
 }
 
 function $all(sentence) {

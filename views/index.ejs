@@ -1,0 +1,156 @@
+<head>
+    <title>Adilson Quifucussa - Curriculum Vitae</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="script.js"></script> -->
+</head>
+
+<body>
+    <div id="content">
+        <div id="head">
+            <img src="profile.png">
+            <span>
+                <span class="nome">Adilson Quirinda Quifucussa</span>
+                <span class="cargo">Software Full Stack Developer/Project Management</span>
+            </span>
+        </div>
+        <div id="left">
+            <div id="email">
+                <span class='row title'>
+                    <%= perfil.title[lang] %>
+                </span>
+                <span class='row'>
+                    <span class='paragraph item-list'>
+                        <%= perfil.text[lang] %>
+                    </span>
+                </span>
+            </div>
+            <div id="experiences">
+                <span class='row title'>
+                    <%= titles.experiencias[lang] %>
+                </span>
+                <% experiencias.forEach((expe)=> { %>
+                    <span class='row row-2'>
+                        <span class='paragraph-1'>
+                            <%= expe.date[lang] %>
+                        </span>
+                        <span class='paragraph-2'>
+                            <span class='title-1'>
+                                <%= expe.role[lang] %>
+                            </span>
+                            <span class='title-2'>
+                                <%= expe.company %>
+                            </span>
+                            <%= expe.desc[lang] %>
+                        </span>
+                    </span>
+                    <% }) %>
+            </div>
+            <div id="formacoes">
+                <span class='row title'>
+                    <%= titles.formacoes[lang] %>
+                </span>
+                <% formacoes.forEach((expe)=> { %>
+                    <span class='row row-2'>
+                        <span class='paragraph-1'>
+                            <%= expe.date[lang] %>
+                        </span>
+                        <span class='paragraph-2'>
+                            <span class='title-1'>
+                                <%= expe.role[lang] %>
+                            </span>
+                            <span class='title-2'>
+                                <%= expe.company %>
+                            </span>
+                            <%= expe.desc[lang] %>
+                        </span>
+                    </span>
+                    <% }) %>
+            </div>
+            <div id="info_adicionais">
+                <span class='row title'>
+                    <%= titles.info_adicionais[lang] %>
+                </span>
+                <% info_adicionais.forEach((expe)=> { %>
+                    <span class='row'>
+                        <span class='paragraph item-list'>
+                            <%= expe[lang] %>
+                        </span>
+                    </span>
+                    <% }) %>
+            </div>
+        </div>
+        <div id="right">
+            <div id="email">
+                <span class='row title'>
+                    Email
+                </span>
+                <span class='row'>
+                    <span class='paragraph item-list'>
+                        quirinda@hotmail.com
+                    </span>
+                </span>
+            </div>
+            <div id="telefone">
+                <span class='row title'>
+                    <%= titles.telefone[lang] %>
+                </span>
+                <span class='row'>
+                    <span class='paragraph item-list'>
+                        +244 925 260 869
+                    </span>
+                </span>
+            </div>
+            <div id="idiomas">
+                <span class='row title'>
+                    <%= titles.idiomas[lang] %>
+                </span>
+                <% idiomas.forEach((idioma)=> { %>
+                    <span class='row'>
+                        <span class='paragraph item-list'>
+                            <%= idioma.nome[lang] %>
+                        </span>
+                    </span>
+                    <% }) %>
+            </div>
+            <div id="techs">
+                <span class='row title'>
+                    <%= titles.tec_competencias[lang] %>
+                </span>
+                <% techs.forEach((tech)=> { %>
+                    <span class='row'>
+                        <span class='title-3'>
+                            <%= tech.title2[lang] %>
+                        </span>
+                        <span class='item-list'>
+                            <%= tech.techs %>
+                        </span>
+                    </span>
+                    <% }) %>
+            </div>
+            <div id="certifications">
+                <span class='row title'>
+                    <%= titles.certifications[lang] %>
+                </span>
+                <% certifications.forEach((certification)=> { %>
+                    <span class='row'>
+                        <span class='item-list'>
+                            <%= certification[lang] %>
+                        </span>
+                    </span>
+                    <% }) %>
+            </div>
+            <div id="pers_competencias">
+                <span class='row title'>
+                    <%= titles.pers_competencias[lang] %>
+                </span>
+                <% pers_competencias.forEach((prs)=> { %>
+                    <span class='row'>
+                        <span class='item-list'>
+                            <%= prs[lang] %>
+                        </span>
+                    </span>
+                    <% }) %>
+            </div>
+        </div>
+    </div>
+</body>
