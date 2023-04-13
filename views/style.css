@@ -4,7 +4,7 @@
 }
 
 #content {
-    width: 760;
+    width: 860;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -50,13 +50,13 @@
 #left {
     min-height: 100vh;
     padding: 5;
-    width: 62%;
+    width: 42%;
 }
 
 #right {
     min-height: 100vh;
     padding: 10;
-    width: 32%;
+    width: 22%;
     background-color: #d2d7d8;
 }
 
