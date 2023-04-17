@@ -33,7 +33,7 @@ const params = {
 app.get('/', function (request, response) {
     response.render('index', params)
 })
-
-// app.get('/en', function(request, response){
-//     response.sendFile('index.html', { root: __dirname})
-// })
+app.get('/en', function (request, response) {
+    params.lang = 'en';
+    response.render('index', params)
+})
